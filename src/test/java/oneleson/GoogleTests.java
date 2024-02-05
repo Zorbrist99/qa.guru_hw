@@ -15,12 +15,16 @@ public class GoogleTests {
     void selenideSerchTest(){
 
         Configuration.timeout=60000;
+        Configuration.holdBrowserOpen=true;
 
         //Открыть браузер
         open("https://www.google.com/");
         //Ввести Selenide в поиске
         $(byName("q")).setValue("Selenide").pressEnter();
-        //Проверить, что Selenide появился в результатах поиска
-        $("#search").shouldHave(text("Selenide"));
+        //Проверить, что Selenide появился в результатах поиска (почему не находит эелемент?)
+        $("#search .byrV5b").shouldHave(text("Selenide")).pressEnter();
+        $(".main-menu-pages").shouldHave(text("Отзывы"));
+
+
     }
 }
