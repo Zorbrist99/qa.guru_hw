@@ -21,6 +21,6 @@ public class GoogleTests {
         //Ввести Selenide в поиске
         $(byName("q")).setValue("Selenide").pressEnter();
         //Проверить, что Selenide появился в результатах поиска
-        $("#search").shouldHave(text("Selenide"));
+        $("#search").shouldHave(text("https://ru.selenide.org/"));
     }
 }
