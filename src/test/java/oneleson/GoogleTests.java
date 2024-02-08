@@ -25,6 +25,5 @@ public class GoogleTests {
         $("#search .byrV5b").shouldHave(text("Selenide")).pressEnter();
         $(".main-menu-pages").shouldHave(text("Отзывы"));
 
-
     }
 }
