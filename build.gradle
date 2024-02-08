@@ -1,14 +1,19 @@
+
+//На каком языке мы будем пистаь год
 plugins {
     id 'java-library'
 }
 
+//Откуда подтягивать все библиотечки
 repositories {
     mavenCentral()
 }
 
+
+//Какие зависимости нам нужны.  Тут вопрос, не понятно что подразумевается ?
 dependencies {
     testImplementation (
-            "com.codeborne:selenide:6.16.0",
+            "com.codeborne:selenide-testng:6.16.0",
             "org.junit.jupiter:junit-jupiter:5.9.3")
 }
 
@@ -16,6 +21,7 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
+//Позволяет создать зелёную кнопочку, при помощи которой мы можем запускать тесты
 test {
     useJUnitPlatform()
 }
