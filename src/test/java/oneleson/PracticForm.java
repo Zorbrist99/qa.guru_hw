@@ -6,7 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
+import java.io.File;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -19,8 +21,7 @@ public class PracticForm {
      void Configuration(){
         Configuration.holdBrowserOpen=true;
         Configuration.baseUrl="https://demoqa.com/";
-        Configuration.timeout=5000;
-        Configuration.browserSize="1920X1080";
+        Configuration.browserSize="1920x1080";
         //Команда позволяет не ждать прогрузки страницы, а сразу искать элементы в доме
         Configuration.pageLoadStrategy="eager";
 
@@ -47,11 +48,23 @@ public class PracticForm {
         //Ввести пару предметов
         $("#subjectsInput").setValue("Economics").pressEnter();
         //Выбрать чекбокс хобби
+        $("#hobbiesWrapper").$(byText("Reading")).click();
         //Добавить картинку
+        $("#uploadPicture").uploadFile(new File("fileForTest/ForTest.PNG"));
         //Ввести адрес
+        $("#currentAddress").setValue("Russia, Moscow, 3rd street of builders");
         //Выбрать рандомно из двух выпадающех меню
+        $("#stateCity-wrapper").$(byText("Select State")).click();
+        $(byText("Uttar Pradesh")).click();
+        $("#stateCity-wrapper").$(byText("Select City")).click();
+        $(byText("Agra")).click();
         //Нажать кнопку обработки
+        $("#submit").click();
         //Проверить результат в новом окне
+        $(".modal-content").shouldHave(text("Thanks for submitting the form"));
+        //Закрыть окно
+        $(".modal-footer").$(byText("Close")).click();
+
 
 
     }
