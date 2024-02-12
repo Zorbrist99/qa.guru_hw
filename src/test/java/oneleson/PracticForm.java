@@ -19,7 +19,6 @@ public class PracticForm {
 
     @BeforeEach
      void Configuration(){
-        Configuration.holdBrowserOpen=true;
         Configuration.baseUrl="https://demoqa.com/";
         Configuration.browserSize="1920x1080";
         //Команда позволяет не ждать прогрузки страницы, а сразу искать элементы в доме
@@ -50,7 +49,8 @@ public class PracticForm {
         //Выбрать чекбокс хобби
         $("#hobbiesWrapper").$(byText("Reading")).click();
         //Добавить картинку
-        $("#uploadPicture").uploadFile(new File("fileForTest/ForTest.PNG"));
+        //!!!!При использовании метода uploadFromClasspath необходимо добавлять файл в специальную папку resources. Её необходимо располагать в папке test. В Этом случае файлы будут подтягиваться по имени.
+        $("#uploadPicture").uploadFromClasspath("ForTest.png");
         //Ввести адрес
         $("#currentAddress").setValue("Russia, Moscow, 3rd street of builders");
         //Выбрать рандомно из двух выпадающех меню
@@ -62,6 +62,16 @@ public class PracticForm {
         $("#submit").click();
         //Проверить результат в новом окне
         $(".modal-content").shouldHave(text("Thanks for submitting the form"));
+        $(".modal-body").shouldHave(text("Sergey Ermolaev")).
+                                  shouldHave(text("zorbrist@mail.ru")).
+                                  shouldHave(text("Male")).
+                                  shouldHave(text("8914783342")).
+                                  shouldHave(text("10 April,1994")).
+                                  shouldHave(text("Economics")).
+                                  shouldHave(text("Reading")).
+                                  shouldHave(text("ForTest.png")).
+                                  shouldHave(text("Russia, Moscow, 3rd street of builders")).
+                                  shouldHave(text("Uttar Pradesh Agra"));
         //Закрыть окно
         $(".modal-footer").$(byText("Close")).click();
 
