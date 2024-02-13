@@ -19,6 +19,7 @@ public class Snippets {
         open("/", AuthenticationType.BASIC,
                 new BasicAuthCredentials("", "user", "password"));
 
+        //Команды для стрелочек браузера в верхней части экрана
         Selenide.back();
         Selenide.refresh();
 
