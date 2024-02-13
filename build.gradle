@@ -13,7 +13,7 @@ repositories {
 //Какие зависимости нам нужны.  Тут вопрос, не понятно что подразумевается ?
 dependencies {
     testImplementation (
-            "com.codeborne:selenide-testng:6.16.0",
+            "com.codeborne:selenide-testng:7.0.6",
             "org.junit.jupiter:junit-jupiter:5.9.3")
 }
 

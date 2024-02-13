@@ -10,6 +10,7 @@ import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -36,7 +37,7 @@ public class PracticForm {
         //Ввести мэил
         $("#userEmail").setValue("zorbrist@mail.ru");
         //Выбрать пол
-        $("#genterWrapper").$(byText("Male")).click();
+        $("#genterWrapper").$(withText("Male")).click();
         //Ввести номер
         $("#userNumber").setValue("89147833422");
         //Ввести дату рождения
