@@ -35,7 +35,7 @@ public class searchEnterprizeInGitHub {
 
     @Test
     void DragAndDrop(){
-        Configuration.holdBrowserOpen=true;
+        
 
         open("https://the-internet.herokuapp.com/drag_and_drop");
         $("#column-a").dragAndDrop(DragAndDropOptions.to("#column-b"));
