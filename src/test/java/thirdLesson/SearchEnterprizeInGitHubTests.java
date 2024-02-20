@@ -1,6 +1,5 @@
 package thirdLesson;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.DragAndDropOptions;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +8,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class searchEnterprizeInGitHub {
+public class SearchEnterprizeInGitHubTests {
 
 
     @Test
@@ -25,7 +24,7 @@ public class searchEnterprizeInGitHub {
 
 
     @Test
-    void moveToElement(){
+    void moveToElement() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
         //!!!Интересная команда на будущее для перетаскивая каких-то элементов на какой-то элемент!!!
         actions().clickAndHold($("#column-a")).moveToElement($("#column-b")).release().perform();
@@ -34,8 +33,8 @@ public class searchEnterprizeInGitHub {
     }
 
     @Test
-    void DragAndDrop(){
-        
+    void DragAndDrop() {
+
 
         open("https://the-internet.herokuapp.com/drag_and_drop");
         $("#column-a").dragAndDrop(DragAndDropOptions.to("#column-b"));

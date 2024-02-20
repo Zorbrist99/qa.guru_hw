@@ -5,31 +5,32 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 
-public class PracticForm {
+public class PracticFormTests {
 
 
     @BeforeEach
-     void Configuration(){
-        Configuration.baseUrl="https://demoqa.com/";
-        Configuration.browserSize="1920x1080";
+    void Configuration() {
+        Configuration.baseUrl = "https://demoqa.com/";
+        Configuration.browserSize = "1920x1080";
         //Команда позволяет не ждать прогрузки страницы, а сразу искать элементы в доме
-        Configuration.pageLoadStrategy="eager";
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.holdBrowserOpen = true;
 
     }
+
     @Test
-    void StudentRegistrationForm(){
+    void StudentRegistrationForm() {
         //Открыть экранную форму
         open("automation-practice-form");
+        //!!Удалим не нужную рекламу при помощи команды из JavaScript!!
+        executeJavaScript("$('.Google-Ad').remove()");
+
         //Ввести Имя
         $("#firstName").setValue("Sergey");
         //Ввести Фамилию
@@ -41,9 +42,13 @@ public class PracticForm {
         //Ввести номер
         $("#userNumber").setValue("89147833422");
         //Ввести дату рождения
-        $(".react-datepicker__input-container").click();
-        $(".react-datepicker__month-select").click();$(byText("April")).click();
-        $(".react-datepicker__year-select").click();$(byText("1994")).click();
+        $("#dateOfBirthInput").click();
+        //!! Команда selectOption может пригодиться когда в DOOM элементы расположены в формате тего <select> <option> </option> </select> !!
+        $(".react-datepicker__month-select").selectOption("April");
+        // Аналог команды выше, но более удленённый вариант
+//        $(".react-datepicker__month-select").click();$(byText("April")).click();
+        $(".react-datepicker__year-select").selectOption("1994");
+//        $(".react-datepicker__year-select").click();$(byText("1994")).click();
         $(".react-datepicker__month").$(byText("10")).click();
         //Ввести пару предметов
         $("#subjectsInput").setValue("Economics").pressEnter();
@@ -64,18 +69,17 @@ public class PracticForm {
         //Проверить результат в новом окне
         $(".modal-content").shouldHave(text("Thanks for submitting the form"));
         $(".modal-body").shouldHave(text("Sergey Ermolaev")).
-                                  shouldHave(text("zorbrist@mail.ru")).
-                                  shouldHave(text("Male")).
-                                  shouldHave(text("8914783342")).
-                                  shouldHave(text("10 April,1994")).
-                                  shouldHave(text("Economics")).
-                                  shouldHave(text("Reading")).
-                                  shouldHave(text("ForTest.png")).
-                                  shouldHave(text("Russia, Moscow, 3rd street of builders")).
-                                  shouldHave(text("Uttar Pradesh Agra"));
+                shouldHave(text("zorbrist@mail.ru")).
+                shouldHave(text("Male")).
+                shouldHave(text("8914783342")).
+                shouldHave(text("10 April,1994")).
+                shouldHave(text("Economics")).
+                shouldHave(text("Reading")).
+                shouldHave(text("ForTest.png")).
+                shouldHave(text("Russia, Moscow, 3rd street of builders")).
+                shouldHave(text("Uttar Pradesh Agra"));
         //Закрыть окно
         $(".modal-footer").$(byText("Close")).click();
-
 
 
     }
