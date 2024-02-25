@@ -20,8 +20,6 @@ public class PracticFormTests {
         Configuration.browserSize = "1920x1080";
         //Команда позволяет не ждать прогрузки страницы, а сразу искать элементы в доме
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
-
     }
 
     @Test
