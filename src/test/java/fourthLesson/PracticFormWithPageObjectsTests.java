@@ -3,14 +3,12 @@ package fourthLesson;
 import fourthLesson.pages.RegistrationForm;
 import org.junit.jupiter.api.Test;
 
-
-
 public class PracticFormWithPageObjectsTests extends TestBase {
 
     RegistrationForm registrationForm = new RegistrationForm();
 
     @Test
-    void StudentRegistrationForm() {
+    void studentRegistrationForm() {
         registrationForm.openPage()
                 .setFirstName("Sergey")
                 .setLastName("Ermolaev")
@@ -37,5 +35,39 @@ public class PracticFormWithPageObjectsTests extends TestBase {
                 .checkFinalValue("Address", "Russia, Moscow, 3rd street of builders")
                 .checkFinalValue("State and City", "Uttar Pradesh Agra")
                 .setClose("Close");
+    }
+
+    @Test
+    void shortStudentRegistrationForm() {
+        registrationForm.openPage()
+                .setFirstName("Sergey")
+                .setLastName("Ermolaev")
+                .setUserEmail("zorbrist@mail.ru")
+                .chooseGenterWrapper("Male")
+                .setUserNumber("89147833422")
+                .setDateOfBirthday("1994", "April", "10")
+                .setAddress("Russia, Moscow, 3rd street of builders")
+                .clickSubmit()
+                .shouldTextThanks("Thanks for submitting the form")
+                .checkFinalValue("Student Name", "Sergey Ermolaev")
+                .checkFinalValue("Student Email", "zorbrist@mail.ru")
+                .checkFinalValue("Gender", "Male")
+                .checkFinalValue("Mobile", "8914783342")
+                .checkFinalValue("Date of Birth", "10 April,1994")
+                .checkFinalValue("Address", "Russia, Moscow, 3rd street of builders");
+//                .setClose("Close");
+    }
+
+    @Test
+    void negativeStudentRegistrationForm() {
+        registrationForm.openPage()
+                .setFirstName("Sergey")
+                .setUserEmail("zorbrist@mail.ru")
+                .chooseGenterWrapper("Male")
+                .setUserNumber("89147833422")
+                .setDateOfBirthday("1994", "April", "10")
+                .setAddress("Russia, Moscow, 3rd street of builders")
+                .clickSubmit()
+                .visibleFinalWindow();
     }
 }

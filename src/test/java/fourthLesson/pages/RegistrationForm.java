@@ -1,7 +1,10 @@
 package fourthLesson.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import fourthLesson.components.CalendarComponent;
+import fourthLesson.components.ResultWindow;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
@@ -9,15 +12,14 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationForm {
 
+    CalendarComponent calendarComponent = new CalendarComponent();
+    ResultWindow resultWindow = new ResultWindow();
     public static SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             genterWrapperInput = $("#genterWrapper"),
             userNumberInput = $("#userNumber"),
             dateOfBirthInput = $("#dateOfBirthInput"),
-            monthInput = $(".react-datepicker__month-select"),
-            yearInput = $(".react-datepicker__year-select"),
-            dayInput = $(".react-datepicker__month"),
             subjectsInput = $("#subjectsInput"),
             hobbiesInput = $("#hobbiesWrapper"),
             pictureInput = $("#uploadPicture"),
@@ -26,7 +28,6 @@ public class RegistrationForm {
             cityInput = $("#stateCity-wrapper").$(byText("Select City")),
             submitClick = $("#submit"),
             thanksChack = $(".modal-content"),
-            finalWindow = $(".table-responsive"),
             closeClick = $(".modal-footer");
 
 
@@ -63,9 +64,7 @@ public class RegistrationForm {
 
     public RegistrationForm setDateOfBirthday(String year, String month, String day) {
         dateOfBirthInput.click();
-        monthInput.selectOption(month);
-        yearInput.selectOption(year);
-        dayInput.$(byText(day)).click();
+        calendarComponent.setDate(year, month, day);
         return this;
     }
 
@@ -106,13 +105,18 @@ public class RegistrationForm {
         return this;
     }
 
+    public RegistrationForm visibleFinalWindow(){
+        thanksChack.shouldNot(appear);
+        return this;
+    }
+
     public RegistrationForm shouldTextThanks(String thanks) {
         thanksChack.shouldHave(text(thanks));
         return this;
     }
 
     public RegistrationForm checkFinalValue(String key, String value) {
-        finalWindow.shouldHave(text(key)).parent().shouldHave(text(value));
+        resultWindow.checkResult(key, value);
         return this;
     }
 
@@ -120,6 +124,7 @@ public class RegistrationForm {
         closeClick.$(byText(value)).click();
         return this;
     }
+
 
 
 }
