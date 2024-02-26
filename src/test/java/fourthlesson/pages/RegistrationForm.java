@@ -1,8 +1,8 @@
-package fourthLesson.pages;
+package fourthlesson.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import fourthLesson.components.CalendarComponent;
-import fourthLesson.components.ResultWindow;
+import fourthlesson.components.CalendarComponent;
+import fourthlesson.components.ResultWindow;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
@@ -14,10 +14,10 @@ public class RegistrationForm {
 
     CalendarComponent calendarComponent = new CalendarComponent();
     ResultWindow resultWindow = new ResultWindow();
-    public static SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
-            genterWrapperInput = $("#genterWrapper"),
+            genderWrapperInput = $("#genterWrapper"),
             userNumberInput = $("#userNumber"),
             dateOfBirthInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
@@ -52,8 +52,8 @@ public class RegistrationForm {
         return this;
     }
 
-    public RegistrationForm chooseGenterWrapper(String gender) {
-        genterWrapperInput.$(withText(gender)).click();
+    public RegistrationForm chooseGenderWrapper(String gender) {
+        genderWrapperInput.$(withText(gender)).click();
         return this;
     }
 

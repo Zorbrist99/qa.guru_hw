@@ -1,6 +1,6 @@
-package fourthLesson;
+package fourthlesson;
 
-import fourthLesson.pages.RegistrationForm;
+import fourthlesson.pages.RegistrationForm;
 import org.junit.jupiter.api.Test;
 
 public class PracticFormWithPageObjectsTests extends TestBase {
@@ -13,7 +13,7 @@ public class PracticFormWithPageObjectsTests extends TestBase {
                 .setFirstName("Sergey")
                 .setLastName("Ermolaev")
                 .setUserEmail("zorbrist@mail.ru")
-                .chooseGenterWrapper("Male")
+                .chooseGenderWrapper("Male")
                 .setUserNumber("89147833422")
                 .setDateOfBirthday("1994", "April", "10")
                 .setSubjects("Economics")
@@ -43,12 +43,13 @@ public class PracticFormWithPageObjectsTests extends TestBase {
                 .setFirstName("Sergey")
                 .setLastName("Ermolaev")
                 .setUserEmail("zorbrist@mail.ru")
-                .chooseGenterWrapper("Male")
+                .chooseGenderWrapper("Male")
                 .setUserNumber("89147833422")
                 .setDateOfBirthday("1994", "April", "10")
                 .setAddress("Russia, Moscow, 3rd street of builders")
                 .clickSubmit()
                 .shouldTextThanks("Thanks for submitting the form")
+                .checkFinalValue("Student Name", "Sergey Ermolaev")
                 .checkFinalValue("Student Name", "Sergey Ermolaev")
                 .checkFinalValue("Student Email", "zorbrist@mail.ru")
                 .checkFinalValue("Gender", "Male")
@@ -63,7 +64,7 @@ public class PracticFormWithPageObjectsTests extends TestBase {
         registrationForm.openPage()
                 .setFirstName("Sergey")
                 .setUserEmail("zorbrist@mail.ru")
-                .chooseGenterWrapper("Male")
+                .chooseGenderWrapper("Male")
                 .setUserNumber("89147833422")
                 .setDateOfBirthday("1994", "April", "10")
                 .setAddress("Russia, Moscow, 3rd street of builders")

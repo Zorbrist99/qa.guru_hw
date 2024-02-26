@@ -1,4 +1,4 @@
-package thirdLesson;
+package thirdlesson;
 
 import com.codeborne.selenide.DragAndDropOptions;
 import org.junit.jupiter.api.Test;
