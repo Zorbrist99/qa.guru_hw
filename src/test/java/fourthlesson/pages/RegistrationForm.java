@@ -1,6 +1,7 @@
 package fourthlesson.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import fourthlesson.components.BaseElements;
 import fourthlesson.components.CalendarComponent;
 import fourthlesson.components.ResultWindow;
 
@@ -14,20 +15,18 @@ public class RegistrationForm {
 
     CalendarComponent calendarComponent = new CalendarComponent();
     ResultWindow resultWindow = new ResultWindow();
+    BaseElements baseElements = new BaseElements();
     private final SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
-            userEmailInput = $("#userEmail"),
             genderWrapperInput = $("#genterWrapper"),
             userNumberInput = $("#userNumber"),
             dateOfBirthInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
             hobbiesInput = $("#hobbiesWrapper"),
             pictureInput = $("#uploadPicture"),
-            addressInput = $("#currentAddress"),
             stateInput = $("#stateCity-wrapper").$(byText("Select State")),
             cityInput = $("#stateCity-wrapper").$(byText("Select City")),
-            submitClick = $("#submit"),
-            thanksChack = $(".modal-content"),
+            thanksCheck = $(".modal-content"),
             closeClick = $(".modal-footer");
 
 
@@ -48,7 +47,7 @@ public class RegistrationForm {
     }
 
     public RegistrationForm setUserEmail(String mail) {
-        userEmailInput.setValue(mail);
+        baseElements.setUserEmail(mail);
         return this;
     }
 
@@ -84,7 +83,7 @@ public class RegistrationForm {
     }
 
     public RegistrationForm setAddress(String address) {
-        addressInput.setValue(address);
+        baseElements.setAddress(address);
         return this;
     }
 
@@ -101,17 +100,17 @@ public class RegistrationForm {
     }
 
     public RegistrationForm clickSubmit() {
-        submitClick.click();
+       baseElements.Submit();
         return this;
     }
 
     public RegistrationForm visibleFinalWindow(){
-        thanksChack.shouldNot(appear);
+        thanksCheck.shouldNot(appear);
         return this;
     }
 
     public RegistrationForm shouldTextThanks(String thanks) {
-        thanksChack.shouldHave(text(thanks));
+        thanksCheck.shouldHave(text(thanks));
         return this;
     }
 

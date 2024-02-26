@@ -55,8 +55,8 @@ public class PracticFormWithPageObjectsTests extends TestBase {
                 .checkFinalValue("Gender", "Male")
                 .checkFinalValue("Mobile", "8914783342")
                 .checkFinalValue("Date of Birth", "10 April,1994")
-                .checkFinalValue("Address", "Russia, Moscow, 3rd street of builders");
-//                .setClose("Close");
+                .checkFinalValue("Address", "Russia, Moscow, 3rd street of builders")
+                .setClose("Close");
     }
 
     @Test
