@@ -3,7 +3,7 @@ package fourthlesson;
 import fourthlesson.pages.RegistrationForm;
 import org.junit.jupiter.api.Test;
 
-public class PracticFormWithPageObjectsTests extends TestBase {
+public class PracticeFormWithPageObjectsTests extends TestBase {
 
     RegistrationForm registrationForm = new RegistrationForm();
 
