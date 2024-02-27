@@ -16,12 +16,5 @@ public class TestBase {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
 
-//        Faker faker = new Faker(new Locale("ru"));
-
-//        String name = faker.name().firstName();
-//        String firstName = faker.name().firstName();
-//        String lastName = faker.name().lastName();
-//
-//        String streetAddress = faker.address().streetAddress();
     }
 }
