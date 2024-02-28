@@ -25,6 +25,6 @@ tasks.withType(JavaCompile) {
 //Позволяет создать зелёную кнопочку, при помощи которой мы можем запускать тесты
 test {
     useJUnitPlatform{
-        systemProperties += System.properties
+        useJUnitPlatform()
     }
 }

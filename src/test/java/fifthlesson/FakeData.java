@@ -6,13 +6,16 @@ import com.github.javafaker.Faker;
 public class FakeData {
 
 
-    static Faker faker = new Faker();
-    static String name,lastName, number, birthdayYear, birthdayMonth,
+     static Faker faker = new Faker();
+   static   String name,lastName, number, birthdayYear, birthdayMonth,
             birthdayDay, subjects, hobbies, picture, state, city, mail,
             gender, address;
 
+
+
     public static String setName() {
-        return name = faker.name().firstName();
+         name = faker.name().firstName();
+         return name;
     }
 
     public static String setLastName() {
@@ -69,13 +72,13 @@ public class FakeData {
         String cityHaryana = String.valueOf(faker.options().option("Merrut", "Panipat"));
         String cityRajasthan = String.valueOf(faker.options().option("Jaipur", "Jaiselmer"));
 
-        if (state == "NCR") {
+        if (state.equals("NCR")) {
             city = cityNcr;
-        } else if (state == "Uttar Pradesh") {
+        } else if (state.equals("Uttar Pradesh")) {
             city = cityUttarPradesh;
-        } else if (state == "Haryana") {
+        } else if (state.equals("Haryana")) {
             city = cityHaryana;
-        } else if (state == "Rajasthan") {
+        } else if (state.equals("Rajasthan")) {
             city = cityRajasthan;
         }
         return city;

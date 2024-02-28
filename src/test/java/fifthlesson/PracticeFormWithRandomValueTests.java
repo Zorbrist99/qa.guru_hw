@@ -4,86 +4,88 @@ package fifthlesson;
 import fourthlesson.TestBase;
 import fourthlesson.pages.RegistrationForm;
 import org.junit.jupiter.api.Test;
+
 import static fifthlesson.FakeData.*;
 import static fifthlesson.FakeData.setMail;
 
 
 public class PracticeFormWithRandomValueTests extends TestBase {
     RegistrationForm registrationForm = new RegistrationForm();
-    String Name = setName(),
-            LastName = setLastName(),
-            Mail = setMail(),
-            Gender = setGender(),
-            Number = setNumber(),
-            BirthdayMonth = setBirthdayMonth(),
-            BirthdayYear = setBirthdayYear(),
-            BirthdayDay = setBirthdayDay(),
-            Subjects = setSubjects(),
-            Hobbies = setHobbies(),
-            Picture = setPicture(),
-            Address = setAddress(),
-            State = setState(),
-            City = setCity();
+    String name = setName(),
+            lastName = setLastName(),
+            mail = setMail(),
+            gender = setGender(),
+            number = setNumber(),
+            birthdayMonth = setBirthdayMonth(),
+            birthdayYear = setBirthdayYear(),
+            birthdayDay = setBirthdayDay(),
+            subjects = setSubjects(),
+            hobbies = setHobbies(),
+            picture = setPicture(),
+            address = setAddress(),
+            state = setState(),
+            city = setCity();
+
     @Test
     void studentRegistrationForm() {
         registrationForm.openPage()
-                .setFirstName(Name)
-                .setLastName(LastName)
-                .setUserEmail(Mail)
-                .chooseGenderWrapper(Gender)
-                .setUserNumber(Number)
-                .setDateOfBirthday(BirthdayMonth, BirthdayYear, BirthdayDay)
-                .setSubjects(Subjects)
-                .setHobbies(Hobbies)
-                .uploadPicture(Picture)
-                .setAddress(Address)
-                .setState(State)
-                .setCity(City)
+                .setFirstName(name)
+                .setLastName(lastName)
+                .setUserEmail(mail)
+                .chooseGenderWrapper(gender)
+                .setUserNumber(number)
+                .setDateOfBirthday(birthdayMonth, birthdayYear, birthdayDay)
+                .setSubjects(subjects)
+                .setHobbies(hobbies)
+                .uploadPicture(picture)
+                .setAddress(address)
+                .setState(state)
+                .setCity(city)
                 .clickSubmit()
                 .shouldTextThanks("Thanks for submitting the form")
-                .checkFinalValue("Student Name", Name + " " + LastName)
-                .checkFinalValue("Student Email", Mail)
-                .checkFinalValue("Gender",Gender)
-                .checkFinalValue("Mobile", Number)
-                .checkFinalValue("Date of Birth", BirthdayDay + " " + BirthdayMonth + "," + BirthdayYear)
-                .checkFinalValue("Subjects", Subjects)
-                .checkFinalValue("Hobbies", Hobbies)
-                .checkFinalValue("Picture", Picture)
-                .checkFinalValue("Address", Address)
-                .checkFinalValue("State and City", State + " " + City)
+                .checkFinalValue("Student Name", name + " " + lastName)
+                .checkFinalValue("Student Email", mail)
+                .checkFinalValue("Gender", gender)
+                .checkFinalValue("Mobile", number)
+                .checkFinalValue("Date of Birth", birthdayDay + " " + birthdayMonth + "," + birthdayYear)
+                .checkFinalValue("Subjects", subjects)
+                .checkFinalValue("Hobbies", hobbies)
+                .checkFinalValue("Picture", picture)
+                .checkFinalValue("Address", address)
+                .checkFinalValue("State and City", state + " " + city)
                 .setClose("Close");
     }
 
     @Test
     void shortStudentRegistrationForm() {
         registrationForm.openPage()
-                .setFirstName(Name)
-                .setLastName(LastName)
-                .setUserEmail(Mail)
-                .chooseGenderWrapper(Gender)
-                .setUserNumber(Number)
-                .setDateOfBirthday(BirthdayMonth, BirthdayYear, BirthdayDay)
-                .setAddress(Address)
+                .setFirstName(name)
+                .setLastName(lastName)
+                .setUserEmail(mail)
+                .chooseGenderWrapper(gender)
+                .setUserNumber(number)
+                .setDateOfBirthday(birthdayMonth, birthdayYear, birthdayDay)
+                .setAddress(address)
                 .clickSubmit()
                 .shouldTextThanks("Thanks for submitting the form")
-                .checkFinalValue("Student Name", Name + " " + LastName)
-                .checkFinalValue("Student Email", Mail)
-                .checkFinalValue("Gender", Gender)
-                .checkFinalValue("Mobile", Number)
-                .checkFinalValue("Date of Birth", BirthdayDay + " " + BirthdayMonth + "," + BirthdayYear)
-                .checkFinalValue("Address", Address)
+                .checkFinalValue("Student Name", name + " " + lastName)
+                .checkFinalValue("Student Email", mail)
+                .checkFinalValue("Gender", gender)
+                .checkFinalValue("Mobile", number)
+                .checkFinalValue("Date of Birth", birthdayDay + " " + birthdayMonth + "," + birthdayYear)
+                .checkFinalValue("Address", address)
                 .setClose("Close");
     }
 
     @Test
     void negativeStudentRegistrationForm() {
         registrationForm.openPage()
-                .setFirstName(Name)
-                .setUserEmail(Mail)
-                .chooseGenderWrapper(Gender)
-                .setUserNumber(Number)
-                .setDateOfBirthday(BirthdayMonth, BirthdayYear, BirthdayDay)
-                .setAddress(Address)
+                .setFirstName(name)
+                .setUserEmail(mail)
+                .chooseGenderWrapper(gender)
+                .setUserNumber(number)
+                .setDateOfBirthday(birthdayMonth, birthdayYear, birthdayDay)
+                .setAddress(address)
                 .clickSubmit()
                 .visibleFinalWindow();
     }
