@@ -27,5 +27,65 @@ public class Main {
         System.out.println("Hello world!");
 
 
+        int a = 25;
+        int b = 104;
+        int c;
+
+        c = a + b;
+        System.out.println(c);
+
+        short aa = 30000;
+        short ad = 2768;
+        short ac;
+
+        //Не понятно почему выводится отрицательное значение в консоль
+        ac = (short) (aa + ad);
+        System.out.println(ac);
+
+        int as = 10;
+        int bg = 20;
+
+        System.out.println(as>bg);
+
+        int ah = 10;
+        int bh = 20;
+        int rt;
+
+        rt= (ah>bh)?50:25;
+        System.out.println(rt);
+
+        int ry = 15;
+        double ed = 13.2;
+        int sc ;
+
+        sc = (int) (ry + ed);
+
+        System.out.println(sc);
+
+
+
+        double sk ;
+
+        sk = ry + ed;
+
+        System.out.println(sk);
+
+        System.out.println( );
+
+        System.out.println(ry + ed);
+
+        boolean i;
+        boolean v = true;
+        boolean p = false;
+
+        i = v&p;
+        System.out.println(i);
+        System.out.println( );
+        i = v||p;
+        System.out.println(i);
+        System.out.println();
+        i = !(v&p);
+        System.out.println(i);
+
     }
 }
