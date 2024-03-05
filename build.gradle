@@ -12,6 +12,7 @@ repositories {
 
 //Какие зависимости нам нужны.  Тут вопрос, не понятно что подразумевается ?
 dependencies {
+    implementation 'org.jetbrains:annotations:23.0.0'
     testImplementation (
             "com.codeborne:selenide-testng:7.0.6",
             'com.github.javafaker:javafaker:1.0.2',
