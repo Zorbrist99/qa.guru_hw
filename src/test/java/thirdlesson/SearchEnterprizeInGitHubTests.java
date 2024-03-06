@@ -25,7 +25,7 @@ public class SearchEnterprizeInGitHubTests {
 
 
     @Test
-    @ParameterizedTest
+
     void moveToElement() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
         //!!!Интересная команда на будущее для перетаскивая каких-то элементов на какой-то элемент!!!

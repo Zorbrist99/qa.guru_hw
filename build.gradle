@@ -22,10 +22,38 @@ dependencies {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
 
 //Позволяет создать зелёную кнопочку, при помощи которой мы можем запускать тесты
 test {
     useJUnitPlatform{
         useJUnitPlatform()
+    }
+}
+
+// Задача для запуска тестов с тегом "smoke"
+tasks.register('smoke', Test) {
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat "full"
+    }
+    useJUnitPlatform {
+        includeTags("smoke")
+    }
+}
+
+// Задача для запуска тестов с тегом "regress"
+tasks.register('regress', Test) {
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat "full"
+    }
+    useJUnitPlatform {
+        includeTags("regress")
     }
 }
