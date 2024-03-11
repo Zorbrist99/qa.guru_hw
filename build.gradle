@@ -16,7 +16,9 @@ dependencies {
     testImplementation (
             "com.codeborne:selenide-testng:7.0.6",
             'com.github.javafaker:javafaker:1.0.2',
-            "org.junit.jupiter:junit-jupiter:5.9.3")
+            "org.junit.jupiter:junit-jupiter:5.9.3",
+            'commons-io:commons-io:2.15.1'
+    )
 }
 
 tasks.withType(JavaCompile) {
