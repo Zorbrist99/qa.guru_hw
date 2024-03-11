@@ -1,5 +1,7 @@
 package eighthlesson;
 
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.FileDownloadMode;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +18,11 @@ public class SearchFail {
 
     @Test
     void downloadedFail() throws Exception {
+
+        //Позволяет скачивать документ без href
+        Configuration.fileDownload = FileDownloadMode.PROXY;
+
+
         open("https://github.com/junit-team/junit5/blob/main/README.md");
         File file = $(".react-blob-header-edit-and-raw-actions  [href*='main/README.md']").download();
 
@@ -29,7 +36,9 @@ public class SearchFail {
         }
 
         //Компактное решение чтения файла в строку, при помощи библиотеки
-        FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+      String fileContestString =   FileUtils.readFileToString(file, StandardCharsets.UTF_8);
 
     }
+
+
 }
