@@ -10,8 +10,8 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.*;
 
 public class SearchFail {
 
@@ -35,10 +35,17 @@ public class SearchFail {
             System.out.println(strContent.contains("Contributions to JUnit 5 are both welcomed and appreciated."));
         }
 
-        //Компактное решение чтения файла в строку, при помощи библиотеки
-      String fileContestString =   FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+//        //Компактное решение чтения файла в строку, при помощи библиотеки
+//      String fileContestString =   FileUtils.readFileToString(file, StandardCharsets.UTF_8);
 
     }
 
+    @Test
+    void upLoudFile() {
+        open("https://transfiles.ru/");
+        //Все кнопки загрузки файла можно найти при помощи этого локатора
+        $("input[type='file']").uploadFromClasspath("foto/my1.jpg");
+        $(".a_file").shouldHave(text("my1.jpg"));
+    }
 
 }
