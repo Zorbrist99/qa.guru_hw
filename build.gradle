@@ -1,8 +1,23 @@
-
 //На каком языке мы будем пистаь год
 plugins {
     id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
 }
+
+allure {
+    report {
+        version.set("2.19.0")
+    }
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) //обработка аннотации @Step
+        frameworks {
+            junit5 { //название фреймворка
+                adapterVersion.set("2.19.0") //версия интеграции фреймворка и Allure
+            }
+        }
+    }
+}
+
 
 //Откуда подтягивать все библиотечки
 repositories {
@@ -13,11 +28,13 @@ repositories {
 //Какие зависимости нам нужны.  Тут вопрос, не понятно что подразумевается ?
 dependencies {
     implementation 'org.jetbrains:annotations:23.0.0'
-    testImplementation (
+    testImplementation(
             "com.codeborne:selenide-testng:7.0.6",
             'com.github.javafaker:javafaker:1.0.2',
             "org.junit.jupiter:junit-jupiter:5.9.3",
-            'commons-io:commons-io:2.15.1'
+            'commons-io:commons-io:2.15.1',
+            'com.codeborne:pdf-test:1.8.1',
+            'io.qameta.allure:allure-selenide:2.25.0'
     )
 }
 
@@ -33,7 +50,7 @@ compileTestJava {
 
 //Позволяет создать зелёную кнопочку, при помощи которой мы можем запускать тесты
 test {
-    useJUnitPlatform{
+    useJUnitPlatform {
         useJUnitPlatform()
     }
 }
