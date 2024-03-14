@@ -5,6 +5,9 @@ import io.qameta.allure.Attachment;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -17,6 +20,7 @@ public class AllureReportsTests {
 
     private static final String PROJECT = "qa-guru";
     private static final String ISSUES = "[BUG] Список всех пользователей.";
+
 
     @Test
     @DisplayName("Тест без прописанных шагов ")
