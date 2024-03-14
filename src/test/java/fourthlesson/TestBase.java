@@ -2,17 +2,12 @@ package fourthlesson;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.github.javafaker.Faker;
 import io.qameta.allure.selenide.AllureSelenide;
-import ninthlesson.attachments.Attach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.testng.annotations.AfterTest;
 
-import java.util.Locale;
 
-import static ninthlesson.attachments.Attach.screenshotAs;
+import static ninthlesson.attachments.Attach.*;
 
 
 public class TestBase {
@@ -29,5 +24,7 @@ public class TestBase {
     @AfterEach
     public void configurationAfter (){
         screenshotAs( "Скрин");
+        pageSource();
+        browserConsoleLogs();
     }
 }

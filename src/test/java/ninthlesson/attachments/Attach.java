@@ -22,16 +22,19 @@ public class Attach {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
+    // Лог в котором отображается вся верстка HTML (по факту весь DOOM)
     @Attachment(value = "Page source", type = "text/plain")
     public static byte[] pageSource() {
         return getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
     }
 
+    //Нужен для консольных логов
     @Attachment(value = "{attachName}", type = "text/plain")
     public static String attachAsText(String attachName, String message) {
         return message;
     }
 
+    //Можно использовать как в отдельных методах, так и через аннотации. Показывает сообщения, которые генерит браузер.
     public static void browserConsoleLogs() {
         attachAsText(
                 "Browser console logs",
