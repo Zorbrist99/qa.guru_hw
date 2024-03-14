@@ -5,8 +5,11 @@ import fourthlesson.TestBase;
 import fourthlesson.pages.RegistrationForm;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static ninthlesson.attachments.Attach.screenshotAs;
 
 public class PracticeFormWithJenkinsJob extends TestBase {
 
@@ -44,7 +47,6 @@ public class PracticeFormWithJenkinsJob extends TestBase {
                     .checkFinalValue("Hobbies", "Reading")
                     .checkFinalValue("Picture", "ForTest.png")
                     .checkFinalValue("Address", "Russia, Moscow, 3rd street of builders")
-                    .checkFinalValue("State and City", "Uttar Pradesh Agra")
-                    .setClose("Close");
+                    .checkFinalValue("State and City", "Uttar Pradesh Agra");
         }
     }
