@@ -40,7 +40,7 @@ public class RegistrationForm {
     public RegistrationForm openPage() {
         open("automation-practice-form");
         executeJavaScript("$('.Google-Ad').remove()");
-        executeJavaScript("$('.adsbygoogle adsbygoogle-noablate').remove()");
+        executeJavaScript("$('#fixedban').remove()");
         Attach.screenshotAs( "Скрин");
         return this;
     }
