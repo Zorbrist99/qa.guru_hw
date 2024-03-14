@@ -7,6 +7,7 @@ import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static ninthlesson.attachments.Attach.screenshotAs;
@@ -21,6 +22,7 @@ public class PracticeFormWithJenkinsJob extends TestBase {
         @Story("Заполнение формы регистрации")
         @Owner("ermolaevcc")
         @Severity(SeverityLevel.NORMAL)
+        @Tag("simple")
         @DisplayName("Проверка формы регистрации")
         void RegistrationForm() {
             registrationForm.openPage()

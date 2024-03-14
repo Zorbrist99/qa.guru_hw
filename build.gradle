@@ -49,9 +49,14 @@ compileTestJava {
 }
 
 //Позволяет создать зелёную кнопочку, при помощи которой мы можем запускать тесты
-test {
-    useJUnitPlatform {
-        useJUnitPlatform()
+tasks.withType(Test) {
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
     }
 }
 
@@ -74,5 +79,12 @@ tasks.register('regress', Test) {
     }
     useJUnitPlatform {
         includeTags("regress")
+    }
+}
+
+// Гредл задача с именем simple_test с типом Test (Будет выполнять только задачи типа).Включает только тесты c tag = sipmle
+task simple_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("simple")
     }
 }
