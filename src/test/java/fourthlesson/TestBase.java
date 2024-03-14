@@ -3,9 +3,13 @@ package fourthlesson;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import ninthlesson.attachments.Attach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
+
+import java.util.Map;
 
 import static ninthlesson.attachments.Attach.*;
 
@@ -26,5 +30,6 @@ public class TestBase {
         screenshotAs( "Скрин");
         pageSource();
         browserConsoleLogs();
+        addVideo();
     }
 }
