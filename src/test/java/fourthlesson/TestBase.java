@@ -22,6 +22,8 @@ public class TestBase {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
         SelenideLogger.addListener("allure", new AllureSelenide());
+        //Команда запускает сессию не локально, а в Docer контейнере
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     //Если хотим делать один скрин после последнего шага теста
