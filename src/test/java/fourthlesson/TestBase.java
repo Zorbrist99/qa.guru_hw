@@ -1,11 +1,17 @@
 package fourthlesson;
 
 import com.codeborne.selenide.Configuration;
-import com.github.javafaker.Faker;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import ninthlesson.attachments.Attach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.util.Locale;
+
+import java.util.Map;
+
+import static ninthlesson.attachments.Attach.*;
 
 
 public class TestBase {
@@ -15,6 +21,15 @@ public class TestBase {
         Configuration.baseUrl = "https://demoqa.com/";
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
 
+    //Если хотим делать один скрин после последнего шага теста
+    @AfterEach
+    public void configurationAfter (){
+        screenshotAs( "Скрин");
+        pageSource();
+        browserConsoleLogs();
+        addVideo();
     }
 }
