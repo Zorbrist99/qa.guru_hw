@@ -30,6 +30,6 @@ public class TestBase {
         screenshotAs( "Скрин");
         pageSource();
         browserConsoleLogs();
-        addVideo();
+
     }
 }
