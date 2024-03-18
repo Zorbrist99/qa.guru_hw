@@ -1,15 +1,12 @@
 package fourthlesson.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
 import fourthlesson.components.BaseElements;
 import fourthlesson.components.CalendarComponent;
 import fourthlesson.components.ResultWindow;
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import ninthlesson.attachments.Attach;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
