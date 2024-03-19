@@ -50,8 +50,7 @@ compileTestJava {
 
 //Позволяет создать зелёную кнопочку, при помощи которой мы можем запускать тесты
 tasks.withType(Test) {
-    useJUnitPlatform()
-
+    systemProperties(System.getProperties())
     testLogging {
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
