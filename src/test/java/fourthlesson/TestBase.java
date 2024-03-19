@@ -17,8 +17,8 @@ public class TestBase {
 
     @BeforeAll
     public static void Configuration() {
-//        String DOMEN = System.getProperty("DOMEN");
-//        Configuration.DOMEN = DOMEN ;
+        String baseUrl = System.getProperty("baseUrl");
+        Configuration.baseUrl = baseUrl ;
 //        Configuration.baseUrl = "https://demoqa.com/";
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
