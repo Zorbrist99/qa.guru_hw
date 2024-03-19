@@ -17,8 +17,8 @@ public class TestBase {
 
     @BeforeAll
     public static void Configuration() {
-        String baseUrl = System.getProperty("baseUrl");
-        Configuration.baseUrl = baseUrl ;
+//        String baseUrl = System.getProperty("baseUrl");
+//        Configuration.baseUrl = baseUrl ;
 //        Configuration.baseUrl = "https://demoqa.com/";
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
