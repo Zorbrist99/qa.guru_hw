@@ -37,7 +37,7 @@ public class ParameterizedTests {
     }
 
     @DisplayName("Короткая проверка пополнения игр из меню")
-    @Tag("regress")
+    @Tag("smoke")
     @ValueSource(strings = {
             "Brawl Stars",
             "Honkai Star Rail"

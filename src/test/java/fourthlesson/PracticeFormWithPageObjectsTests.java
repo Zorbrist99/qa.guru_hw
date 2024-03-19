@@ -1,6 +1,7 @@
 package fourthlesson;
 
 import fourthlesson.pages.RegistrationForm;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class PracticeFormWithPageObjectsTests extends TestBase {
@@ -8,6 +9,7 @@ public class PracticeFormWithPageObjectsTests extends TestBase {
     RegistrationForm registrationForm = new RegistrationForm();
 
     @Test
+    @Tag("regress")
     void studentRegistrationForm() {
         registrationForm.openPage()
                 .setFirstName("Sergey")
