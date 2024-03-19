@@ -17,14 +17,9 @@ public class TestBase {
 
     @BeforeAll
     public static void Configuration() {
-//        String baseUrl = System.getProperty("baseUrl");
-//        Configuration.baseUrl = baseUrl ;
-//        Configuration.baseUrl = "https://demoqa.com/";
-//        Configuration.browserSize = "1920x1080";
-        Configuration.pageLoadStrategy = "eager";
         SelenideLogger.addListener("allure", new AllureSelenide());
         //Команда запускает сессию не локально, а в Docer контейнере
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         // Для фиксации видео через selenoid
         DesiredCapabilities capabilities = new DesiredCapabilities();
