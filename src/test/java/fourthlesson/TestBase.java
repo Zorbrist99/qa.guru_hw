@@ -17,7 +17,9 @@ public class TestBase {
 
     @BeforeAll
     public static void Configuration() {
-        Configuration.baseUrl = "https://demoqa.com/";
+//        String DOMEN = System.getProperty("DOMEN");
+//        Configuration.DOMEN = DOMEN ;
+//        Configuration.baseUrl = "https://demoqa.com/";
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
         SelenideLogger.addListener("allure", new AllureSelenide());
