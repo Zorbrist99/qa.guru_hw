@@ -35,7 +35,7 @@ public class RegistrationForm {
 
     @Step("Открыть страницу")
     public RegistrationForm openPage() {
-        open("automation-practice-form");
+        open("/automation-practice-form");
         executeJavaScript("$('.Google-Ad').remove()");
         executeJavaScript("$('#fixedban').remove()");
         Attach.screenshotAs( "Скрин");
