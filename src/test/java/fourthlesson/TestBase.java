@@ -18,9 +18,6 @@ public class TestBase {
     @BeforeAll
     public static void Configuration() {
         SelenideLogger.addListener("allure", new AllureSelenide());
-        //Команда запускает сессию не локально, а в Docer контейнере
-//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-
         // Для фиксации видео через selenoid
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
