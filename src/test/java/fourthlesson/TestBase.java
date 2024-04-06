@@ -18,6 +18,8 @@ public class TestBase {
     @BeforeAll
     public static void Configuration() {
         SelenideLogger.addListener("allure", new AllureSelenide());
+        Configuration.remote= "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.baseUrl="https://demoqa.com";
         // Для фиксации видео через selenoid
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(

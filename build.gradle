@@ -34,7 +34,9 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:5.9.3",
             'commons-io:commons-io:2.15.1',
             'com.codeborne:pdf-test:1.8.1',
-            'io.qameta.allure:allure-selenide:2.25.0'
+            'io.qameta.allure:allure-selenide:2.25.0',
+            'io.rest-assured:rest-assured:5.3.1',
+            'org.slf4j:slf4j-simple:2.0.7'
     )
 }
 
@@ -85,5 +87,11 @@ tasks.register('regress', Test) {
 task simple_test(type: Test) {
     useJUnitPlatform {
         includeTags("simple")
+    }
+}
+
+task api_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("api")
     }
 }
