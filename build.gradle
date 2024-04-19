@@ -8,13 +8,13 @@ plugins {
 
 allure {
     report {
-        version.set("2.21.0")
+        version.set("2.25.0")
     }
     adapter { // отвечает за появление папочки build/allure-results
         aspectjWeaver.set(true) //обработка аннотации @Step
         frameworks {
             junit5 { //название фреймворка
-                adapterVersion.set("2.21.0") //версия интеграции фреймворка и Allure
+                adapterVersion.set("2.25.0") //версия интеграции фреймворка и Allure
             }
         }
     }
@@ -39,7 +39,8 @@ dependencies {
             'io.rest-assured:json-schema-validator:5.3.1',
             'io.qameta.allure:allure-selenide:2.25.0',
             'io.rest-assured:rest-assured:5.4.0',
-            'org.slf4j:slf4j-simple:2.0.7'
+            'org.slf4j:slf4j-simple:2.0.7',
+            "io.qameta.allure:allure-rest-assured:2.25.0"
     )
 }
 
@@ -54,14 +55,8 @@ compileTestJava {
 }
 
 //Позволяет создать зелёную кнопочку, при помощи которой мы можем запускать тесты
-tasks.withType(Test) {
-    systemProperties(System.getProperties())
-    testLogging {
-        lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
-            exceptionFormat "short"
-        }
-    }
+test {
+    useJUnitPlatform()
 }
 
 // Задача для запуска тестов с тегом "smoke"
@@ -98,3 +93,4 @@ task api_test(type: Test) {
         includeTags("api")
     }
 }
+
