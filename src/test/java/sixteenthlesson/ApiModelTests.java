@@ -12,7 +12,6 @@ import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static sixteenthlesson.helpers.CustomAllureListener.withCustomTemplates;
 import static sixteenthlesson.specs.SpecRequest.userRequestSpec;
 import static sixteenthlesson.specs.SpecRequest.userResponseSpec;
 
@@ -34,8 +33,6 @@ public class ApiModelTests {
 
         ModelResUsers response = step("POST.Создание пользователя", () ->
                 given(userRequestSpec)
-                        //шаг для Allure
-                        .filter(withCustomTemplates())
                         .body(modelRequestUsers)
 
                         .when()
@@ -61,7 +58,6 @@ public class ApiModelTests {
 
         ModelResSingleUsers response = step("GET.Поиск конкретного пользователя", () ->
                 given(userRequestSpec)
-                        .filter(withCustomTemplates())
                         .get("/users/2")
                         .then()
                         .spec(userResponseSpec)
@@ -83,7 +79,6 @@ public class ApiModelTests {
     void searchNonExistentUser() {
         step("GET.Поиск несуществующего пользователя", () ->
                 given(userRequestSpec)
-                        .filter(withCustomTemplates())
                         .get("/users/160")
                         .then()
                         .spec(userResponseSpec)
@@ -100,7 +95,6 @@ public class ApiModelTests {
 
         ModelResUsers response = step("PUT.Запрос на изменение данных существующего пользователя", () ->
                 given(userRequestSpec)
-                        .filter(withCustomTemplates())
                         .body(modelReqUsers)
 
                         .when()
@@ -111,7 +105,7 @@ public class ApiModelTests {
                         .statusCode(200)
                         .extract().as(ModelResUsers.class));
 
-        step("POST.Проверка изменения сущности действующего пользователя", () -> {
+        step("PUT.Проверка изменения сущности действующего пользователя", () -> {
             assertEquals("morpheus", response.getName());
             assertEquals("zion resident", response.getJob());
             assertNotNull(response.getUpdatedAt());
@@ -123,7 +117,6 @@ public class ApiModelTests {
     void deleteUser() {
         step("DELETE.Удаление пользователя", () ->
                 given(userRequestSpec)
-                        .filter(withCustomTemplates())
                         .delete("/users/2")
                         .then()
                         .spec(userResponseSpec)

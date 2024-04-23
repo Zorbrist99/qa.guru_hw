@@ -7,9 +7,12 @@ import io.restassured.specification.ResponseSpecification;
 import static io.restassured.RestAssured.with;
 import static io.restassured.filter.log.LogDetail.ALL;
 import static io.restassured.http.ContentType.JSON;
+import static sixteenthlesson.helpers.CustomAllureListener.withCustomTemplates;
 
 public class SpecRequest {
     public static RequestSpecification userRequestSpec = with()
+            //шаг для Allure
+            .filter(withCustomTemplates())
             .log().body()
             .log().uri()
             .contentType(JSON);
