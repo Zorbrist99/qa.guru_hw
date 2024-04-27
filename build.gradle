@@ -92,5 +92,12 @@ task api_test(type: Test) {
     useJUnitPlatform {
         includeTags("api")
     }
+
+    task web_test(type: Test) {
+        useJUnitPlatform {
+            includeTags("web")
+        }
+    }
+
 }
 

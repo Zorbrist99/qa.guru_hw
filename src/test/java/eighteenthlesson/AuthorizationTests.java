@@ -7,6 +7,7 @@ import eighteenthlesson.models.ModelReqUsersShopBook;
 import eighteenthlesson.models.ModelResUsersShopBook;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 
@@ -30,6 +31,7 @@ public class AuthorizationTests extends TestBaseShopBook {
     ModelReqUsersShopBook modelReqUsersShopBook = new ModelReqUsersShopBook();
 
     @Test
+    @Tag("web")
     @DisplayName("Тест на web авторизацию")
     void authorizationWebTests() {
 
@@ -54,6 +56,7 @@ public class AuthorizationTests extends TestBaseShopBook {
     }
 
     @Test
+    @Tag("api")
     @DisplayName("Тест на API авторизацию")
     void authorizationApiTests() {
 
@@ -153,6 +156,7 @@ public class AuthorizationTests extends TestBaseShopBook {
 
 
     @Test
+    @Tag("api")
     @DisplayName("Тест на добавление/удаление книг в корзинe с моделями")
     void deleteBookToCart() {
 
