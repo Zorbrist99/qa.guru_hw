@@ -1,10 +1,13 @@
 package eighteenthlesson;
 
 import com.codeborne.selenide.Selenide;
+import eighteenthlesson.api.AuthApi;
+import eighteenthlesson.api.BasketApi;
 import eighteenthlesson.models.ModelReqAddBooksInBasket;
 import eighteenthlesson.models.ModelReqDeleteBooks;
 import eighteenthlesson.models.ModelReqUsersShopBook;
 import eighteenthlesson.models.ModelResUsersShopBook;
+import eighteenthlesson.web.CartPage;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;

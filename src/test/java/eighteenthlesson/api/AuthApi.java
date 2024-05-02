@@ -1,5 +1,6 @@
-package eighteenthlesson;
+package eighteenthlesson.api;
 
+import eighteenthlesson.TestBaseShopBook;
 import eighteenthlesson.models.ModelReqUsersShopBook;
 import eighteenthlesson.models.ModelResUsersShopBook;
 import io.qameta.allure.Step;

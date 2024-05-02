@@ -1,5 +1,6 @@
-package eighteenthlesson;
+package eighteenthlesson.api;
 
+import eighteenthlesson.TestBaseShopBook;
 import eighteenthlesson.models.ModelReqAddBooksInBasket;
 import eighteenthlesson.models.ModelReqDeleteBooks;
 import io.qameta.allure.Step;

@@ -1,4 +1,4 @@
-package eighteenthlesson;
+package eighteenthlesson.web;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
