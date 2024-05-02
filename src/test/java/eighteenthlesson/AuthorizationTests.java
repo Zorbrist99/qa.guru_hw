@@ -19,8 +19,8 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static eighteenthlesson.cpecs.Spec.userRequestSpec;
-import static eighteenthlesson.cpecs.Spec.userResponseSpec;
+import static eighteenthlesson.specs.Spec.userRequestSpec;
+import static eighteenthlesson.specs.Spec.userResponseSpec;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
@@ -182,9 +182,10 @@ public class AuthorizationTests extends TestBaseShopBook {
                 given(userRequestSpec)
                         .body(modelReqDeleteBooks)
                         .contentType(JSON)
+                        .queryParam("UserId", authResponse.getUserId())
                         .header("Authorization", "Bearer " + authResponse.getToken())
                         .when()
-                        .delete("/BookStore/v1/Books?UserId=73643252-1128-487d-b3bc-0b8cde9e51f2")
+                        .delete("/BookStore/v1/Books")
                         .then()
                         .spec(userResponseSpec)
                         .statusCode(204));
@@ -220,6 +221,9 @@ public class AuthorizationTests extends TestBaseShopBook {
         step("Открываем уже авторизованный лк", () -> {
             open("/profile");
         });
+
+        //Проверяем что пользователь залогинен
+
         step("Проверяем, что книга добавлена", () -> {
             $(".rt-tbody").shouldHave(text("Git Pocket Guide")).shouldBe(visible);
         });
@@ -235,5 +239,25 @@ public class AuthorizationTests extends TestBaseShopBook {
         });
     }
 
+    @Test
+    @Tag("api/web")
+    @DisplayName("Тест на добавление/удаление книг в корзинe с убранными API запросами")
+    void deleteBookToCartApi() {
+        BasketApi basketApi = new BasketApi();
+        CartPage cartPage = new CartPage();
+
+
+
+        ModelResUsersShopBook authResponse = AuthApi.authorization();
+        basketApi.cleaningBasket(authResponse.getUserId(), authResponse.getToken());
+        basketApi.addBookTheCart(authResponse.getUserId(), authResponse.getToken());
+        basketApi.addCookie(authResponse.getUserId(), authResponse.getToken(), authResponse.getExpires());
+        cartPage.openPersonalAccount()
+                .userVerification("zorbrist")
+                .checkingBook()
+                .cleaningBasket()
+                .confirmation()
+                .checkShoppingCartEmpty();
+    }
 }
 

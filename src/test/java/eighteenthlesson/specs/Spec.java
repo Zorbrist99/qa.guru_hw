@@ -1,4 +1,4 @@
-package eighteenthlesson.cpecs;
+package eighteenthlesson.specs;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
