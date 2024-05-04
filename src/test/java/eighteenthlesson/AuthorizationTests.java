@@ -253,10 +253,10 @@ public class AuthorizationTests extends TestBaseShopBook {
 
         ModelResUsersShopBook authResponse = AuthApi.authorization();
         basketApi.cleaningBasket(authResponse.getUserId(), authResponse.getToken());
-        basketApi.addBookTheCart(authResponse.getUserId(), authResponse.getToken());
+        basketApi.addBookTheCart(authResponse.getUserId(), authResponse.getToken(), "9781449325862");
         basketApi.addCookie(authResponse.getUserId(), authResponse.getToken(), authResponse.getExpires());
         cartPage.openPersonalAccount()
-                .userVerification("zorbrist")
+                .userVerification(authResponse.getUsername())
                 .checkingBook()
                 .cleaningBasket()
                 .confirmation()

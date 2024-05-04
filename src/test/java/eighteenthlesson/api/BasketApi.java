@@ -18,15 +18,15 @@ import static io.restassured.http.ContentType.JSON;
 public class BasketApi extends TestBaseShopBook {
 
     @Step("Очистка корзины")
-    public void cleaningBasket(String UserId, String token) {
+    public void cleaningBasket(String userId, String token) {
 
         ModelReqDeleteBooks modelReqDeleteBooks = new ModelReqDeleteBooks();
-        modelReqDeleteBooks.setUserId(UserId);
+        modelReqDeleteBooks.setUserId(userId);
 
         given(userRequestSpec)
                 .body(modelReqDeleteBooks)
                 .contentType(JSON)
-                .queryParam("UserId", UserId)
+                .queryParam("UserId", userId)
                 .header("Authorization", "Bearer " + token)
                 .when()
                 .delete("/BookStore/v1/Books")
@@ -36,12 +36,12 @@ public class BasketApi extends TestBaseShopBook {
     }
 
     @Step("Добавление книги в корзину")
-    public void addBookTheCart(String UserId, String token) {
+    public void addBookTheCart(String userId, String token, String isbn) {
 
         ModelReqAddBooksInBasket modelReqAddBooksInBasket = new ModelReqAddBooksInBasket();
-        modelReqAddBooksInBasket.setUserId(UserId);
+        modelReqAddBooksInBasket.setUserId(userId);
         ModelReqAddBooksInBasket.CollectionOfIsbns collectionOfIsbns = new ModelReqAddBooksInBasket.CollectionOfIsbns();
-        collectionOfIsbns.setIsbn("9781449325862");
+        collectionOfIsbns.setIsbn(isbn);
         modelReqAddBooksInBasket.setCollectionOfIsbns(Collections.singletonList(collectionOfIsbns));
 
 
@@ -57,9 +57,9 @@ public class BasketApi extends TestBaseShopBook {
     }
 
     @Step("Добавление cookie на страницу")
-    public void addCookie(String UserId, String token, String expires) {
+    public void addCookie(String userId, String token, String expires) {
         open("/images/gplaypattern.jpg");
-        getWebDriver().manage().addCookie(new Cookie("userID", UserId));
+        getWebDriver().manage().addCookie(new Cookie("userID", userId));
         getWebDriver().manage().addCookie(new Cookie("token", token));
         getWebDriver().manage().addCookie(new Cookie("expires", expires));
     }
